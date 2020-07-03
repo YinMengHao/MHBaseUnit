@@ -1,0 +1,6 @@
+framework module MHBaseUnit {
+  umbrella header "MHBaseUnit-umbrella.h"
+
+  export *
+  module * { export * }
+}

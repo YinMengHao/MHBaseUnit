@@ -1,0 +1,16 @@
+PODS:
+  - MHBaseUnit (0.1.0)
+
+DEPENDENCIES:
+  - MHBaseUnit (from `../`)
+
+EXTERNAL SOURCES:
+  MHBaseUnit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MHBaseUnit: e5037bbdbe2264c106d0004c6e8ebe00862cdad2
+
+PODFILE CHECKSUM: dbe87e3a311381c55f36172759e750df7f05aa63
+
+COCOAPODS: 1.9.3

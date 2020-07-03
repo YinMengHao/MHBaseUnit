@@ -1,0 +1,22 @@
+{
+  "name": "MHBaseUnit",
+  "version": "0.1.0",
+  "summary": "A short description of MHBaseUnit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/YinMengHao/MHBaseUnit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "YinMengHao": "729263080@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/YinMengHao/MHBaseUnit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MHBaseUnit/Classes/**/*"
+}
