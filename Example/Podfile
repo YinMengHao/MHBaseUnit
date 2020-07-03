@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'MHBaseUnit_Example' do
+  pod 'MHBaseUnit', :path => '../'
+
+  target 'MHBaseUnit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
