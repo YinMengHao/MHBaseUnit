@@ -8,8 +8,8 @@
 
 #import "MHWebController.h"
 #import <WebKit/WebKit.h>
-#import "Masonry.h"
-#import "MHTools.h"
+//#import "Masonry.h"
+//#import "MHTools.h"
 
 
 @interface MHWebController ()<WKNavigationDelegate, WKUIDelegate>
@@ -41,14 +41,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.webView];
     [self.view addSubview:self.progressView];
-    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.offset(0);
-        if (@available(iOS 11.0, *)) {
-            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(0);
-        } else {
-            make.top.offset(0);
-        }
-    }];
+    self.webView.frame = self.view.bounds;
+//    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.left.right.offset(0);
+//        if (@available(iOS 11.0, *)) {
+//            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(0);
+//        } else {
+//            make.top.offset(0);
+//        }
+//    }];
     [self loadDataFromType];
 }
 
@@ -88,7 +89,7 @@
 
 - (UIProgressView*)progressView {
     if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, KNavigationBarHeight, KScreenWidth, 5)];
+        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, [self getStatusBarHight] + self.navigationController.navigationBar.bounds.size.height, UIScreen.mainScreen.bounds.size.width, 5)];
         _progressView.progressTintColor = [UIColor greenColor];
         _progressView.trackTintColor = [UIColor clearColor];
     }
@@ -147,5 +148,14 @@
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [self cleanCacheAndCookie];
 }
-
+- (CGFloat)getStatusBarHight {
+    float statusBarHeight = 0;
+    if (@available(iOS 13.0, *)) {
+        UIStatusBarManager *statusBarManager = [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager;
+        statusBarHeight = statusBarManager.statusBarFrame.size.height;
+    } else {
+        statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+    return statusBarHeight;
+}
 @end
