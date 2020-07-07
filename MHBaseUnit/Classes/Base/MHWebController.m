@@ -12,7 +12,7 @@
 //#import "MHTools.h"
 
 
-@interface MHWebController ()<WKNavigationDelegate, WKUIDelegate>
+@interface MHWebController ()<WKNavigationDelegate, WKUIDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) WKWebView *webView;
 @property(nonatomic,strong)UIProgressView * progressView;
 
@@ -37,6 +37,8 @@
     // Do any additional setup after loading the view.
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"app_back_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backToLastVC)];
     self.navigationItem.leftBarButtonItem = leftItem;
+    self.navigationController.interactivePopGestureRecognizer.delegate=(id)self;
+
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.webView];

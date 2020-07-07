@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"app_back_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backToLastVC)];
+    self.navigationController.interactivePopGestureRecognizer.delegate=(id)self;
     self.navigationItem.leftBarButtonItem = leftItem;
 }
 
